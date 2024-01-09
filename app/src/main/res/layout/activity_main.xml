@@ -74,11 +74,13 @@
 
     <TextView
         android:id="@+id/affirmation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="195dp"
         android:text="You can do it!"
         android:textSize="30sp"
         android:fontFamily="@font/inter_bold"
+        android:textAlignment="center"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

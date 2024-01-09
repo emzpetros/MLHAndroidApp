@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.codepath.asynchttpclient.AsyncHttpClient
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
+import okhttp3.Headers
 
 class MainActivity : AppCompatActivity() {
     private  lateinit var affirmation: String
@@ -17,7 +20,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getAffirmation(){
+        val client = AsyncHttpClient()
+        val url = "https://www.affirmations.dev/"
+        val textView = findViewById<TextView>(R.id.affirmation)
+        client[url, object:
+            JsonHttpResponseHandler(){
+            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
+                if(json != null){
+                    val affirmationText = json.jsonObject.getString("affirmation")
+//                    jsonArray.getJSONObject(0).getString("affiramation")
+                    textView.text = affirmationText
+                }
 
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Headers?,
+                response: String?,
+                throwable: Throwable?
+            ) {
+                textView.text = "Failed"
+            }
+            }
+        ]
     }
 
     private fun refreshAffirmation(button: Button){
