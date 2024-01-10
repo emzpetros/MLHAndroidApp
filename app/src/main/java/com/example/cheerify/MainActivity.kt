@@ -1,5 +1,6 @@
 package com.example.cheerify
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -17,6 +18,15 @@ class MainActivity : AppCompatActivity() {
         affirmation = String()
         getAffirmation()
         refreshAffirmation(refresh)
+
+        val menu = findViewById<Button>(R.id.menu_button)
+        goToMenu(menu)
+//        menu.setOnClickListener{
+//            val intent = Intent(this, MenuActivity::class.java)
+//            startActivity(intent)
+//        }
+        val add = findViewById<Button>(R.id.add_button)
+        goToAdd(add)
     }
 
     private fun getAffirmation(){
@@ -49,6 +59,20 @@ class MainActivity : AppCompatActivity() {
     private fun refreshAffirmation(button: Button){
         button.setOnClickListener{
             getAffirmation()
+        }
+    }
+
+    private fun goToMenu(button: Button){
+        button.setOnClickListener{
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun goToAdd(button: Button){
+        button.setOnClickListener {
+            val intent = Intent(this, CreateActivity::class.java)
+            startActivity(intent)
         }
     }
 }

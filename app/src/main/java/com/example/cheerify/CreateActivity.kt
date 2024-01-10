@@ -5,22 +5,18 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class MenuActivity: AppCompatActivity() {
+class CreateActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu)
+        setContentView(R.layout.activity_create)
 
         val homeCircle = findViewById<Button>(R.id.home_button)
         goToHome(homeCircle)
 
-        val homeRounded = findViewById<Button>(R.id.home_rounded_button)
-        goToHome(homeRounded)
+        val save = findViewById<Button>(R.id.save_affirmation)
+        saveAffirmation(save)
 
-        val customAffirmationButton = findViewById<Button>(R.id.custom_rounded_button)
-        goToAdd(customAffirmationButton)
     }
-
-
 
     private fun goToHome(button: Button){
         button.setOnClickListener{
@@ -29,11 +25,9 @@ class MenuActivity: AppCompatActivity() {
         }
     }
 
-    private fun goToAdd(button: Button){
-        button.setOnClickListener {
-            val intent = Intent(this, CreateActivity::class.java)
-            startActivity(intent)
+    private fun saveAffirmation(button: Button){
+        button.setOnClickListener{
+
         }
     }
-
 }
